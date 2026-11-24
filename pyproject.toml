@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "network-security-lab"
+version = "0.1.0"
+description = "Research tool for studying network security: VPN, Proxy, traffic analysis"
+requires-python = ">=3.11"
+dependencies = [
+    "PySide6>=6.7.0",
+    "SQLAlchemy>=2.0.0",
+    "scapy>=2.5.0",
+    "pyqtgraph>=0.13.0",
+    "click>=8.1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "pytest-mock>=3.14.0",
+    "ruff>=0.4.0",
+]
+
+[project.scripts]
+nsl = "network_security_lab.cli.main:cli"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]

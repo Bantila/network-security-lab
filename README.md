@@ -1,41 +1,80 @@
-# Лаборатория сетевой безопасности (Network Security Lab)
+# Network Security Lab
 
-Индивидуальный школьный проект по практическому исследованию сетевых протоколов и анализу безопасности локальных сетей.
+Исследовательский инструмент для изучения методов защиты сетевого трафика: VPN, Proxy, анализ пакетов.
 
-## Назначение
-Проект объединяет практические инструменты для диагностики локальной сети, выявления уязвимостей базовых протоколов (ARP, DNS, TCP/IP) и обнаружения аномалий трафика.
+Школьный индивидуальный проект по теме сетевой безопасности.
 
-## Состав модулей
-* **Сканер портов и хостов** (`src/scanner/`): определение активных узлов и открытых сетевых служб.
-* **Анализатор трафика** (`src/analyzer/`): перехват и разбор заголовков сетевых пакетов.
-* **Модуль обнаружения аномалий** (`src/detector/`): фиксация признаков атак в локальном сегменте (ARP-спуфинг, широковещательный шторм).
-* **Отчёты и визуализация** (`src/reporter/`): сводка результатов аудита безопасности.
+## Возможности
 
-## Стек технологий
-* Язык: Python 3.12+
-* Сетевой стек: `socket`, `scapy`
-* Тестирование: `pytest`
-* Линтинг и форматирование: `ruff`
+- Управление сетевыми профилями (VPN, Proxy)
+- Захват и анализ сетевых пакетов
+- Измерение производительности соединений
+- Сравнительные эксперименты: без защиты / SOCKS5 / HTTP CONNECT / WireGuard / Xray
+- Desktop-интерфейс (PySide6) и CLI
 
 ## Быстрый старт
-1. Клонирование репозитория:
-   ```bash
-   git clone https://github.com/Bantila/network-security-lab.git
-   cd network-security-lab
-   ```
-2. Создание и активация окружения:
-   ```bash
-   python -m venv .venv
-   # Windows:
-   .venv\Scripts\activate
-   # Linux/macOS:
-   source .venv/bin/activate
-   ```
-3. Установка зависимостей:
-   ```bash
-   pip install -r requirements.txt
-   ```
-4. Запуск тестов:
-   ```bash
-   pytest
-   ```
+
+```bash
+git clone https://github.com/Bantila/network-security-lab.git
+cd network-security-lab
+
+python -m venv .venv
+.venv\Scripts\activate      # Windows
+# source .venv/bin/activate  # Linux/macOS
+
+pip install -e ".[dev]"
+nsl info
+```
+
+## Запуск тестов
+
+```bash
+pytest
+```
+
+## Стек технологий
+
+| Область | Технология |
+|---|---|
+| Язык | Python 3.11+ |
+| GUI | PySide6 |
+| Анализ пакетов | Scapy |
+| VPN | WireGuard |
+| Proxy engine | Xray-core |
+| База данных | SQLite + SQLAlchemy 2.x |
+| Графики | pyqtgraph |
+| CLI | Click |
+| Тестирование | pytest |
+
+## Статус разработки
+
+| Этап | Статус |
+|---|---|
+| 1. Foundation | ✅ Завершён |
+| 2. Network Core | 🔄 В разработке |
+| 3. Proxy Engine | ⏳ Запланировано |
+| 4. VPN Manager | ⏳ Запланировано |
+| 5. Traffic Analyzer | ⏳ Запланировано |
+| 6. Benchmark Engine | ⏳ Запланировано |
+| 7. Database | ⏳ Запланировано |
+| 8. Desktop GUI | ⏳ Запланировано |
+| 9. Release | ⏳ Запланировано |
+
+## Структура проекта
+
+```
+network-security-lab/
+├── src/network_security_lab/   # Основной пакет
+│   ├── cli/                    # CLI-интерфейс
+│   ├── core/                   # Бизнес-логика (сеть, VPN, proxy, анализ)
+│   ├── application/            # Сервисы и интерфейсы
+│   ├── infrastructure/         # Конфигурация, процессы, захват пакетов
+│   ├── database/               # Модели SQLAlchemy
+│   └── desktop/                # PySide6 GUI
+├── tests/                      # pytest-тесты
+└── docs/                       # Документация
+```
+
+## Лицензия
+
+Учебный проект. Предназначен для анализа собственных устройств и сетей.
